@@ -1,0 +1,25 @@
+#indica la version de Docker Compose utilizada
+version: '3.0'
+#Bloque de servicios, indica los contenedores a utilizar.
+services:
+  app-web:       #nombre del servicio
+    #image: vacax/micro-servicio-estudiante #imagen utilizada si viene del registro.
+    build: .
+    container_name:  practica-jms-main
+    ports:
+      - 8080:4567
+    networks:    #red para conectar los equipos.
+      - red-app
+  practica-jms-msj:
+    build: .
+
+    container_name:  practica-jms-msj
+
+    ports:
+      - 61616:61616
+
+    networks:
+      - red-app
+networks:  #bloque para las redes
+  red-app:   #indicando la red definida
+
